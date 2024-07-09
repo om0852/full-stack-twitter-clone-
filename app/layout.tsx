@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Layout from "./component/Layout";
+import Modal from "./component/Modal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.className} style={{background:"#181717"}}>
+        <Modal actionLabel="Submit" isOpen={true} title="tedt open"
+        />
         <Layout children={children}/>
         </body>
     </html>
