@@ -4,6 +4,7 @@ import "./globals.css";
 import Layout from "./component/Layout";
 import Modal from "./component/Modal";
 import LoginModal from "./component/modals/LoginModal";
+import RegisterModal from "./component/modals/RegisterModal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className} style={{background:"#181717"}}>
         {/* <Modal actionLabel="Submit" isOpen={true} title="tedt open"/> */}
-        <LoginModal/>
+        {/* <LoginModal/> */}
+        <RegisterModal/>
         <Layout children={children}/>
         </body>
     </html>
