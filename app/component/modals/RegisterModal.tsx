@@ -5,14 +5,24 @@ import Input from "../Input";
 import { Modak } from "next/font/google";
 import Modal from "../Modal";
 import useRegisterModal from "../hooks/userRegisterModal";
+import useLoginModal from "../hooks/UserLoginModal";
 
 const RegisterModal=()=>{
     const registerModal =useregisterModal();
+    const loginModal =useLoginModal();
     const [email,setEmail]=useState("")
     const [password,setpassword]=useState("")
     const [name,setName]=useState("")
     const [username,setUserName]=useState("")
     const [isLoading,setIsLoading]=useState(false);
+
+const onToggle=()=>{
+    if(isLoading){
+        return;
+    }
+    registerModal.onClose()
+    loginModal.onOpen()
+}
 
     const onSubmit =useCallback(async()=>{
         try{
@@ -39,17 +49,24 @@ const bodyContent=(
 
     </div>
 )
+const footerContent=(
+    <div className="text-neutral-400 text-center mt-4">
+        <p>Already have an account?</p>
+        <span onClick={onToggle} className="text-white cursor-pointer hover:underline">Sign In</span>
 
+    </div>
+)
     return(
         <>
         <Modal
         disabled={isLoading}
         isOpen={registerModal.isOpen}
-        title="Register"
+        title="Create an account "
 actionLabel="Sign Up"
 onClose={registerModal.onClose}
 onSubmit={onSubmit}
-body={bodyContent}/>
+body={bodyContent}
+footer={footerContent}/>
         </>
     )
 }

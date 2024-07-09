@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className} style={{background:"#181717"}}>
         {/* <Modal actionLabel="Submit" isOpen={true} title="tedt open"/> */}
-        {/* <LoginModal/> */}
+        <LoginModal/>
         <RegisterModal/>
         <Layout children={children}/>
         </body>
