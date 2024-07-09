@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Layout from "./component/Layout";
 import Modal from "./component/Modal";
+import LoginModal from "./component/modals/LoginModal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className} style={{background:"#181717"}}>
         {/* <Modal actionLabel="Submit" isOpen={true} title="tedt open"/> */}
+        <LoginModal/>
         <Layout children={children}/>
         </body>
     </html>
