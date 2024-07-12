@@ -1,15 +1,34 @@
 "use client"
-import React from 'react'
+import { useRouter } from 'next/navigation'
+import React, { useCallback } from 'react'
 import { IconType } from 'react-icons'
+import useCurrentUser from '../hooks/useCurrentUser'
+import LoginModal from '../modals/LoginModal'
+import useLoginModal from '../hooks/UserLoginModal'
 interface SidebarItemsProp {
     label: string,
     href?: string,
     Icon: IconType,
     onClick?: () => void
+    auth?:boolean
 }
-const SidebarItems: React.FC<SidebarItemsProp> = ({ label, href, Icon, onClick }) => {
+const SidebarItems: React.FC<SidebarItemsProp> = ({ label, href, Icon, onClick,auth }) => {
+    const router =useRouter()
+    const loginModal=useLoginModal();
+    const {data:currentuser}=useCurrentUser();
+
+    const onClickHandler=useCallback(()=>{
+if(onClick){
+    return onClick()
+}
+if(auth && !currentuser){
+    loginModal.onOpen();
+}else if(href){
+    router.push(href);
+} else{}
+    },[router,href,onClick,currentuser,auth,LoginModal])
     return (
-        <div className='flex flex-row items-center'>
+        <div onClick={onClickHandler} className='flex flex-row items-center'>
             <div className='relative rounded-full h-14 w-14 flex items-center justify-center p-4 hover:bg-slate-300 hover:bg-opacity-10 cursor-pointer lg:hidden'>
                 <Icon size={20} color='white' />
             </div>

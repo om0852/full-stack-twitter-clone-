@@ -1,10 +1,11 @@
 "use client"
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import useLoginModal from "../hooks/UserLoginModal"
 import Input from "../Input";
 import { Modak } from "next/font/google";
 import Modal from "../Modal";
 import useRegisterModal from "../hooks/userRegisterModal";
+import { signIn } from "next-auth/react";
 
 const LoginModal=()=>{
     const loginModal =useLoginModal();
@@ -25,7 +26,10 @@ const LoginModal=()=>{
     const onSubmit =useCallback(async()=>{
         try{
             setIsLoading(true);
-
+            alert(email+password)
+await signIn("credentials",{
+    email:email,password:password
+})
             //todo  ado log in
 
             loginModal.onClose();
@@ -36,12 +40,12 @@ const LoginModal=()=>{
         finally{
             setIsLoading(false);
         }
-    },[loginModal])
+    },[loginModal,email,password])
 
 const bodyContent=(
     <div className="flex flex-col gap-4">
-        <Input placeholder="Email" onChange={(e)=>setEmail(e.target.value)} value={email} disabled={isLoading}/>
-        <Input placeholder="Password" onChange={(e)=>setpassword(e.target.value)} value={password} disabled={isLoading}/>
+        <Input placeholder="Email"  onChange={(e)=>setEmail(e.target.value)} value={email} disabled={isLoading}/>
+        <Input placeholder="Password" type="password" onChange={(e)=>setpassword(e.target.value)} value={password} disabled={isLoading}/>
 
     </div>
 )
