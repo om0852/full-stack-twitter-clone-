@@ -33,11 +33,11 @@ console.log(email)
 alert("run")
             //todo  ado log in
             await axios.post(`/api/register`,
-                { email:email, password:password, username:"om", name:name }
+                { email:email, password:password, username:username, name:name }
             );
             toast.success("account created")
-            signIn("credential",{
-                email, password
+            signIn("credentials",{
+                email:email, password:password
             })
             registerModal.onClose();
         }
