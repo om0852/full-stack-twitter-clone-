@@ -28,7 +28,7 @@ const UserBio: React.FC<userBioProps> = ({ userid }) => {
                     )}
 
                 </div>
-                <div className="mt-8 px-4 ">
+                <div className="mt-2 px-4 pl-[3vh] ">
                     <div className="flex flex-col"></div>
                     <p className="text-white text-2xl font-semibold"
                     >
@@ -40,14 +40,14 @@ const UserBio: React.FC<userBioProps> = ({ userid }) => {
                     </p>
 
                 </div>
-                <div className="flex flex-col mt-4">
+                <div className="flex flex-col mt-4 pl-[1vh]">
                     <p className="text-white">{fetchedUser?.bio}</p>
                     <div className="flex flex-row items-center gap-2 mt-4 text-neutral-500">
                         <BiCalendar size={20} />
                         <p>Joined {createdAt}</p>
                     </div>
                 </div>
-                <div className="flex flex-row items-center mt-4 gap-6">
+                <div className="flex flex-row items-center mt-4 gap-6 pl-[1vh]">
                     <div className="flex flex-row items-center gap-1">
                         <p className="text-white">{
                             fetchedUser?.followingIds?.length
@@ -60,7 +60,6 @@ const UserBio: React.FC<userBioProps> = ({ userid }) => {
                         }</p>
                         <p className="text-neutral-500">Follower</p>
                     </div>
-
                 </div>
             </div>
         </>
