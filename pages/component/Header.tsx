@@ -18,10 +18,10 @@ const handleBack=useCallback(()=>{
          <div className='flex flex-row items-center gap-2'>
             {
                 showBackArrow && (
-                    <BiArrowBack  onClick={handleBack} size={20} className='cursor-pointer hover:opacity-70 transition'/>
+                    <BiArrowBack  onClick={handleBack} size={20} color='white' className='cursor-pointer hover:opacity-70 transition'/>
                 )
             }
-            <h1 className='text-white'>{label}</h1>
+            <h1 className='text-white text-sm text-xl font-semibold'>{label}</h1>
          </div>
     </div>
   )
