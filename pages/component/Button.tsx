@@ -24,7 +24,7 @@ const  Button:React.FC<ButtonProps>=({label,secondary,fullwidth,large,onClick,di
     ${large?"py-3":"py-2"}
     ${outline?"bg-transparent":""}
     ${outline?"border-white":""}
-    ${outline?"text-white":""}
+    ${outline?"border-white":""}
   }
   
   
