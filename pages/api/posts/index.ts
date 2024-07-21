@@ -2,24 +2,26 @@ import serverAuth from "@/libs/serverAuth";
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "@/libs/prismadb";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
- 
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   try {
     if (req.method === "POST") {
-    //   const { currentUser } = await serverAuth(req);
+      //   const { currentUser } = await serverAuth(req);
 
       // Type assertion to ensure body is a string
       const { body }: { body: string } = req.body;
 
       // Ensure currentUser.id is a string
-      const {userId}: {userId:string} = req.body;
-console.log(req.body)
+      const { userId }: { userId: string } = req.body;
+      console.log(req.body);
       const post = await prisma.post.create({
         data: {
           body,
           userId,
-likedIds:''
-        }
+          likedIds: [],
+        },
       });
 
       return res.status(200).json(post);
