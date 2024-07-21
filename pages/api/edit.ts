@@ -4,8 +4,6 @@ import prisma from "@/libs/prismadb"
 export const config = { api: { bodyParser: { sizeLimit: '25mb' } } }
 export default async function handler(req:NextApiRequest,res:NextApiResponse){
     const {method} = req;
-    console.log("req")
-    console.log(req.body)
     if(method!=="PATCH"){
         return res.status(405).end();
     }
@@ -23,7 +21,6 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse){
                 name,username,bio,profileImage,coverImage
             }
         })
-        console.log("done")
 
         return res.status(200).json(updateUser);
     } catch (error) {
