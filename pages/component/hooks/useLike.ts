@@ -28,7 +28,7 @@ try {
         request =()=>axios.delete(`/api/like`,{data:{postId,userId:currentUser?.id}})
     }
     else{
-        request =()=>axios.post(`/api/like`,{data:{postId,userId:currentUser?.id}})
+        request =()=>axios.post(`/api/like`,{postId,userId:currentUser?.id})
 
     }
     await request();

@@ -8,8 +8,8 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse){
         return res.status(405).end();
     }
     try {
-        const {postId,userId}=req.body.data;
-        console.log(req.body)
+        console.table(req.body)
+        const {postId,userId}=req.body;
         if(!postId){
             throw new Error("Invalid Id");
         }
