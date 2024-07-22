@@ -4,7 +4,7 @@ import useLoginModal from "./hooks/UserLoginModal";
 import useCurrentUser from "./hooks/useCurrentUser";
 import { formatDistanceToNowStrict } from "date-fns";
 import Avatar from "./Avatar";
-import { AiFillHeart, AiOutlineLike, AiOutlineMessage } from "react-icons/ai";
+import { AiFillHeart, AiOutlineHeart, AiOutlineLike, AiOutlineMessage } from "react-icons/ai";
 import useLike from "./hooks/useLike";
 
 interface PostItemProps {
@@ -85,11 +85,13 @@ console.log(hasLike)
                 <AiOutlineMessage size={20} />
                 <p>{data.comments?.length||0}</p>
               </div>
-              <div onClick={onLike} className="flex flex-row items-center text-neutral-500 gap-2 cursor-pointer transition hover:text-red-500">
-                {!hasLike ?<AiOutlineLike size={20} />:
-                <AiFillHeart/>
-                }<p>{data.likedIds?.length||0}</p>
-              </div>
+              {!hasLike ? <div onClick={onLike} className="flex flex-row items-center text-neutral-500 gap-2 cursor-pointer transition hover:text-red-500">
+                <AiOutlineHeart size={20} />
+                <p>{data.likedIds?.length||0}</p>
+              </div> : <div onClick={onLike} className="flex flex-row items-center text-red-500 gap-2 cursor-pointer transition hover:text-red-500">
+                <AiFillHeart size={20} />
+                <p>{data.likedIds?.length||0}</p>
+              </div>}
             </div>
           </div>
         </div>

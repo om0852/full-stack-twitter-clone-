@@ -6,6 +6,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  console.log("index i am ")
   try {
     if (req.method === "POST") {
       //   const { currentUser } = await serverAuth(req);

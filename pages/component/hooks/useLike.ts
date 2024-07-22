@@ -13,7 +13,7 @@ const useLike=({postId,userId}:{postId:string,userId?:string})=>{
 
     const loginModal =useLoginModal();
     const hasLike = useMemo(()=>{
-        
+        console.log(fetchedPost)
         const list = fetchedPost?.likedIds||[];
         return list.includes(currentUser?.id);
     },[currentUser?.id,fetchedPost?.likedIds]);
