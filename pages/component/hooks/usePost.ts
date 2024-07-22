@@ -5,7 +5,7 @@ const usePost = (postId?:string) => {
     // alert(postId)
     let url =`/api/posts/${postId}`;
     const { data, error, isLoading, mutate } = useSWR(url, fetcher);
-    console.log(data);
+    // console.log(data);
     return {
         data,
         error,

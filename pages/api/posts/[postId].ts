@@ -1,3 +1,10 @@
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '50mb', // Set desired value here
+    },
+  },
+};
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "@/libs/prismadb";
 

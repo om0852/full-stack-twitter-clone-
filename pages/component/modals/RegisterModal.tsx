@@ -25,7 +25,7 @@ const RegisterModal = () => {
         loginModal.onOpen()
     }
 useEffect(()=>{
-console.log(email)
+// console.log(email)
 },[email])
     const onSubmit = async () => {
         try {
@@ -42,7 +42,7 @@ alert("run")
             registerModal.onClose();
         }
         catch (error) {
-            console.log(error);
+            // console.log(error);
             toast.success("Something went wrong")
 
         }

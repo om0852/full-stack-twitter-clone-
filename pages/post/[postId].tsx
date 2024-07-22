@@ -4,13 +4,18 @@ import { ClipLoader } from "react-spinners";
 import Header from "../component/Header";
 import PostItem from "../component/PostItem";
 import Form from "../component/Form";
+import CommentFeed from "../component/CommentFeed";
+import { useEffect } from "react";
 
 const PostView=()=>{
   const router = useRouter();
   const {postId}=  router.query;
 
   const {data:fetchedPost,isLoading}=usePost(postId as string);
+useEffect(()=>{
+
   console.log(fetchedPost)
+},[fetchedPost])
   if(isLoading||!fetchedPost){
     return(
       <div className="flex justify-center items-center h-full">
@@ -21,8 +26,9 @@ const PostView=()=>{
   return (
     <>
    <Header label="Tweet" showBackArrow/>
-   <PostItem data={fetchedPost[0]}/>
+   <PostItem data={fetchedPost}/>
    <Form postId={postId as string} isComment placeholder="Tweet Your Reply"/>
+   <CommentFeed comments={fetchedPost?.comments}/>
     </>
   )
 }
