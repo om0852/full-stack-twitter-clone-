@@ -9,8 +9,11 @@ import { BiLogOut } from 'react-icons/bi'
 import SidebarTweetButton from './SidebarTweetButton'
 import useCurrentUser from '../hooks/useCurrentUser'
 import { signOut } from 'next-auth/react'
+import axios from 'axios'
+import { useRouter } from 'next/navigation'
 
 const Sidebar: React.FC = () => {
+    const router = useRouter();
     const {data:currentuser}=useCurrentUser();
     const items = [
         {
@@ -20,9 +23,10 @@ const Sidebar: React.FC = () => {
         },
         {
             label: "Notification",
-            href: "/",
+            href: "/Notification",
             Icon: BsBellFill,
-            auth:true
+            auth:true,
+            alert:currentuser?.hasNotification
         },
         {
             label: "Profile",
@@ -40,7 +44,7 @@ const Sidebar: React.FC = () => {
                     <SidebarLogo />
                     {items.map((data,index) => {
                         return (
-                            <SidebarItems Icon={data.Icon} href={data.href} label={data.label} key={index}/>
+                            <SidebarItems  Icon={data.Icon} href={data.href} label={data.label} key={index} alert={data.alert}/>
                         )
                     })}
                 </div>
