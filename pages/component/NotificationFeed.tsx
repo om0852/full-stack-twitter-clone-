@@ -23,7 +23,7 @@ mutateCurrentUser();
     <div className='flex flex-col'>
         {
             fetchedNotifications.map((notification:Record<string,any>)=>(
-                <div className='flex flex-row items-center p-6 gap-4 border-b-[1px] border-neutral-500'>
+                <div key={notification.id} className='flex flex-row items-center p-6 gap-4 border-b-[1px] border-neutral-500'>
                     <BsTwitter color='white' size={30}/>
                     <p className='text-white'>{notification.body}</p>
                     </div>

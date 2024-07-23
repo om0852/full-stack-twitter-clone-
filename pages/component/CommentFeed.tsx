@@ -9,7 +9,7 @@ return(
     <>
     {
     
-        comments.map((comment:any)=>(
+    comments && comments.map((comment:any)=>(
 <CommentItem key={comment.id}  data={comment}/>
         ))
     }
